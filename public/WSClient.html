@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>WebSocket Client</title>
+
+ <script type="text/javascript">
+      var wsocket;      
+      function connect() {         
+             //wsocket = new WebSocket("ws://localhost:9081/MessageHubWebSocketApp/testsrv");       
+             wsocket = new WebSocket("ws://messagehubwebsocketserver.mybluemix.net/MessageHubWebSocketApp/testsrv");
+             wsocket.onmessage = onMessage;          
+      }
+
+      function onMessage(evt) {             
+         document.getElementById("data").innerHTML=evt.data;          
+      }
+      window.addEventListener("load", connect, false);
+  </script>
+
+</head>
+<body>
+<table>
+<tr>
+<td> <label id="rateLbl">Live Data:</label></td>
+<td> <label id="data">0</label></td>
+</tr>
+</table>
+
+</body>
+
+</html>
